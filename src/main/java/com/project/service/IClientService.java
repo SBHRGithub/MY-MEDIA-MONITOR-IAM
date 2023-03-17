@@ -6,5 +6,7 @@ public interface IClientService {
 
     Client findByEmail(String email);
 
+    Client registerClient(Client client);
+
 
 }

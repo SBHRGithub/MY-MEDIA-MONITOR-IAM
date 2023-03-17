@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping
 @EnableWebSecurity
-public class ClientController {}
-    /*
+public class ClientController {
+
     @Autowired
     IClientService service;
 
@@ -22,10 +22,11 @@ public class ClientController {}
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/register")
     public ResponseEntity<ClientDto> registerClient(@RequestBody ClientDto clientDto) {
-        Client client = mapper.convertDtoToEntity(clientDto);
-        ClientDto clientDto =mapper.convertEntityToDto(service.registerClient(client));
-        return ResponseEntity.status(HttpStatus.CREATED).body(clientDto);
+ //       Client client = mapper.convertDtoToEntity(clientDto);
+ //       ClientDto dto =mapper.convertEntityToDto(service.registerClient(client));
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.convertEntityToDto(service.registerClient(mapper.convertDtoToEntity(clientDto))));
+ //       return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 }
-*/
+
 

@@ -1,7 +1,9 @@
 package com.project.configuration;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;import org.springframework.web.cors.CorsConfigurationSource;import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.project.security.JWTAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -65,6 +67,11 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", configuration);
         return source;}
 
+  //  @Bean
+ //   public PasswordEncoder encoder(){
+ //       return new BCryptPasswordEncoder();
+ //   }
+
     /*
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -81,9 +88,6 @@ public class SecurityConfiguration {
         auth.userDetailsService(userDetailService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
-    @Bean
-    public PasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
-    }
+
 
 }
