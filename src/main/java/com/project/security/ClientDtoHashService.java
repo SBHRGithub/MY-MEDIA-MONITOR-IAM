@@ -32,8 +32,6 @@ public class ClientDtoHashService {
         client.setEmail(clientDto.getEmail());
         client.setPassword(clientDto.getPassword());
 
-//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         client.setPassword(passwordEncoder.encode(clientDto.getPassword()));
         client.setEmail(clientDto.getEmail());
         client.setRoles(new ArrayList<>(Arrays.asList(new Role(1, "USER"))));
@@ -48,5 +46,4 @@ public class ClientDtoHashService {
     public void setClientDto (ClientDto clientDto) {
         this.clientDto = clientDto;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.project.exposition;
 
-import com.project.domain.Client;
 import com.project.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,11 +20,10 @@ public class ClientController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/register")
-    public ResponseEntity<ClientDto> registerClient(@RequestBody ClientDto clientDto) {
- //       Client client = mapper.convertDtoToEntity(clientDto);
- //       ClientDto dto =mapper.convertEntityToDto(service.registerClient(client));
-        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.convertEntityToDto(service.registerClient(mapper.convertDtoToEntity(clientDto))));
- //       return ResponseEntity.status(HttpStatus.CREATED).body(dto);
+    public ResponseEntity<ClientDtoRegisterResponse> registerClient(@RequestBody ClientDto clientDto) {
+         return ResponseEntity
+                 .status(HttpStatus.CREATED)
+                 .body(mapper.convertDtoToDtoResponse(mapper.convertEntityToDto(service.registerClient(mapper.convertDtoToEntity(clientDto)))));
     }
 }
 

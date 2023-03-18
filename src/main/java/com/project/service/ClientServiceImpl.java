@@ -16,10 +16,6 @@ public class ClientServiceImpl implements IClientService{
     @Autowired
     ClientMapper mapper;
 
-   // @Autowired
-    // private ClientDtoHashService clientDtoHashService;
-
-
     public Client findByEmail(String email) {
         return repository.findByEmail(email);
     }
@@ -27,6 +23,4 @@ public class ClientServiceImpl implements IClientService{
     public Client registerClient(Client client) {
         return repository.save(new ClientDtoHashService().clientDtoHash(mapper.convertEntityToDto(client)));
     }
-
-
 }

@@ -18,5 +18,11 @@ public class ClientMapper {
         return client;
     }
 
+    public ClientDtoRegisterResponse convertDtoToDtoResponse(ClientDto clientDto){
+        ClientDtoRegisterResponse clientDtoRegisterResponse = new ClientDtoRegisterResponse();
+        clientDtoRegisterResponse.setEmail(clientDto.getEmail());
+
+        return clientDtoRegisterResponse;
+    }
 
 }

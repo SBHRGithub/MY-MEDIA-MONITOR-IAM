@@ -32,11 +32,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         Client client=null;
-        //Client client=new Client();
 
         try {
-            //client.setEmail("anais@anais.fr");
-            //client.setPassword("pierre");
             client = new ObjectMapper().readValue(request.getInputStream(), Client.class);
         }catch(JsonParseException jpe){
             throw new RuntimeException(jpe);
@@ -72,12 +69,5 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(new ObjectMapper().writeValueAsString((new LoginResponse(monToken, springUser.getUsername()))));
- /*
-        TokenResponse tokenResponse = new TokenResponse(monToken, springUser.getUsername());
-        String tokenResponseJSON = this.gson.toJson(tokenResponse);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().print(tokenResponseJSON);
- */
     }
 }

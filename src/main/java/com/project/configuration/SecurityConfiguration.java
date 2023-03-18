@@ -46,9 +46,7 @@ public class SecurityConfiguration {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll();
     //            .anyRequest().authenticated();
-        //http.authorizeRequests().antMatchers("/register").permitAll()
-        //        .anyRequest().authenticated();
-  //      http.addFilter(new JWTAuthenticationFilter(authenticationManager(http.getSharedObject(AuthenticationConfiguration.class))));
+
         http.csrf().disable();
         http.formLogin().disable();
         http.cors();
@@ -66,22 +64,6 @@ public class SecurityConfiguration {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;}
-
-  //  @Bean
- //   public PasswordEncoder encoder(){
- //       return new BCryptPasswordEncoder();
- //   }
-
-    /*
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;}
-
-     */
 
     @Autowired
     public void configGlobal(AuthenticationManagerBuilder auth) throws Exception{
